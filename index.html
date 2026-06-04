@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="logo.svg" alt="logo"></div>
+            <div class="nav_center">
+                <div class="home"><img src="home.svg" alt="home"></div>
+                <div class="search">
+                    <img src="search.svg" alt="search">
+                    <input type="text" placeholder="What do you want to play">
+                </div>
+            </div>
+            <div class="login"></div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="left">
+                <div class="top_container">
+
+                    <div class="top">
+                        <h2> Your Library</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#e3e3e3">
+                            <path
+                                d="M500-360q42 0 71-29t29-71v-220h120v-80H560v220q-13-10-28-15t-32-5q-42 0-71 29t-29 71q0 42 29 71t71 29ZM320-240q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320Zm0-80h480v-480H320v480ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Zm160-720v480-480Z" />
+                        </svg>
+                    </div>
+
+                    <div class="middle"></div>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="spotify_playlist">
+                    <h2>Spotify Playlist</h2>
+                    <div class="card_container"></div>
+                </div>
+
+                <div class="player_container">
+                    <div class="player">
+                        <span class="songinfo"></span>
+                        <div class="controls">
+                            <img id="prev" src="./controls/prev.svg" alt="">
+                            <img id="play" src="./controls/play.svg" alt="">
+                            <img id="next" src="./controls/next.svg" alt="">
+                        </div>
+                        <div class="timevol">
+                            <div class="songtime"></div>
+                            <div class="volume">
+                                <img src="volume.svg" alt="">
+                                <input type="range">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="seekbar">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
