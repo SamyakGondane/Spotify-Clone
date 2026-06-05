@@ -1,54 +1,20 @@
-// async function GetSongs() {
-//     let SongData = await fetch("./Songs/")
-
-//     let SongHTML = await SongData.text()
-
-//     let div = document.createElement("div")
-//     div.innerHTML = SongHTML
-//     let a = div.getElementsByTagName("a")
-
-//     let SongList = []
-
-//     for (let i = 0; i < a.length; i++) {
-//         if (a[i].href.slice(-3) == "mp3") {
-//             SongList.push(a[i].href)
-//         }
-//     }
-//     return SongList
-// }
-
 async function GetSongs() {
-    try {
-        // Try to fetch songs.json from the Songs folder
-        const response = await fetch('./Songs/songs.json');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+    let SongData = await fetch("./Songs/")
+
+    let SongHTML = await SongData.text()
+
+    let div = document.createElement("div")
+    div.innerHTML = SongHTML
+    let a = div.getElementsByTagName("a")
+
+    let SongList = []
+
+    for (let i = 0; i < a.length; i++) {
+        if (a[i].href.slice(-3) == "mp3") {
+            SongList.push(a[i].href)
         }
-        
-        const data = await response.json();
-        
-        // Validate the response
-        if (data && data.songs && Array.isArray(data.songs)) {
-            return data.songs;
-        } else {
-            throw new Error('Invalid songs.json format');
-        }
-    } catch (error) {
-        console.error('Error loading songs:', error);
-        
-        // Fallback: Manually list your songs
-        return [
-            './Songs/Challa - Jab Tak Hai Jaan.mp3',
-            './Songs/Cheques - Still Rollin.mp3',
-            './Songs/Gehra Hua - Dhurandhar.mp3',
-            './Songs/I Really Do - POP CULTURE.mp3',
-            './Songs/Jiya Re - Jab Tak Hai Jaan.mp3',
-            './Songs/Lemonade - Drive Thru.mp3',
-            './Songs/Naal Nachna - Dhurandhar.mp3',
-            './Songs/Shape of You - Shape of You.mp3'
-        ];
     }
+    return SongList
 }
 
 
