@@ -149,29 +149,71 @@
 
 
 // Updated GetSongs function for Vercel
+
+
+
+
+
+
+// async function GetSongs() {
+//     try {
+//         // Create a manifest file approach
+//         // First, try to fetch a songs manifest if it exists
+//         let response = await fetch("./Songs/songs.json");
+        
+//         if (response.ok) {
+//             let data = await response.json();
+//             return data.songs;
+//         }
+        
+//         // Fallback: Try to manually list songs from a known pattern
+//         // You'll need to update this array with your actual song names
+//         console.warn("songs.json not found, using manual list");
+//         return [
+//             "./Songs/Your-Song-1.mp3",
+//             "./Songs/Your-Song-2.mp3",
+//             "./Songs/Your-Song-3.mp3"
+//         ];
+        
+//     } catch (error) {
+//         console.error("Error loading songs:", error);
+//         return [];
+//     }
+// }
+
+
+
 async function GetSongs() {
     try {
-        // Create a manifest file approach
-        // First, try to fetch a songs manifest if it exists
-        let response = await fetch("./Songs/songs.json");
+        // Try to fetch songs.json from the Songs folder
+        const response = await fetch('./Songs/songs.json');
         
-        if (response.ok) {
-            let data = await response.json();
-            return data.songs;
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
         }
         
-        // Fallback: Try to manually list songs from a known pattern
-        // You'll need to update this array with your actual song names
-        console.warn("songs.json not found, using manual list");
-        return [
-            "./Songs/Your-Song-1.mp3",
-            "./Songs/Your-Song-2.mp3",
-            "./Songs/Your-Song-3.mp3"
-        ];
+        const data = await response.json();
         
+        // Validate the response
+        if (data && data.songs && Array.isArray(data.songs)) {
+            return data.songs;
+        } else {
+            throw new Error('Invalid songs.json format');
+        }
     } catch (error) {
-        console.error("Error loading songs:", error);
-        return [];
+        console.error('Error loading songs:', error);
+        
+        // Fallback: Manually list your songs
+        return [
+            './Songs/Challa - Jab Tak Hai Jaan.mp3',
+            './Songs/Cheques - Still Rollin.mp3',
+            './Songs/Gehra Hua - Dhurandhar.mp3',
+            './Songs/I Really Do - POP CULTURE.mp3',
+            './Songs/Jiya Re - Jab Tak Hai Jaan.mp3',
+            './Songs/Lemonade - Drive Thru.mp3',
+            './Songs/Naal Nachna - Dhurandhar.mp3',
+            './Songs/Shape of You - Shape of You.mp3'
+        ];
     }
 }
 
