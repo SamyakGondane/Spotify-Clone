@@ -1,5 +1,5 @@
 async function GetSongs() {
-    let SongData = await fetch("http://127.0.0.1:3000/Spotify-Clone/Songs/")
+    let SongData = await fetch("/Songs/")
 
     let SongHTML = await SongData.text()
 
