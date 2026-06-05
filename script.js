@@ -1,5 +1,5 @@
 async function GetSongs() {
-    let SongData = await fetch("/Songs/")
+    let SongData = await fetch("Songs/")
 
     let SongHTML = await SongData.text()
 
